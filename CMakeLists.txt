@@ -1,9 +1,16 @@
-﻿# CMakeList.txt : CMake project for Consolidate, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required(VERSION 3.18)
 
-# Add source to this project's executable.
-add_executable (Consolidate "Consolidate.cpp" "Consolidate.h" "Cube.cpp" "Mainclass.h" "Mainclass.cpp" "DeviceResources.h" "DeviceResources.cpp" "Renderer.h" "Renderer.cpp")
+project(Consolidate)
 
-# TODO: Add tests and install targets if needed.
+add_executable(meow)
+
+file(GLOB_RECURSE meow_sources
+    "src/*.h"
+    "src/*.cpp"
+)
+target_sources(meow PUBLIC ${meow_sources})
+
+find_package(OpenGL REQUIRED)
+target_include_directories(meow PUBLIC ${OPENGL_INCLUDE_DIR})
+target_link_libraries(meow PUBLIC ${OPENGL_LIBRARIES})
+
