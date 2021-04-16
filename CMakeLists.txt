@@ -36,3 +36,5 @@ ExternalProject_Add(GLFW
 ExternalProject_Get_Property(GLFW install_dir)
 include_directories(${install_dir}/include)
 target_link_libraries(meow PUBLIC ${install_dir}/lib/glfw3${LIB_EXT})
+
+add_dependencies(meow GLFW)
